@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Recycler</string>
+    <string name="app_name">ProductList</string>
     <string name="res_code">Code</string>
     <string name="res_name">Name</string>
     <string name="res_phone">Phone</string>

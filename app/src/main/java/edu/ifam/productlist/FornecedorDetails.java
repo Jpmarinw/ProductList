@@ -101,13 +101,16 @@ public class FornecedorDetails extends AppCompatActivity {
         etFornecedorEndereco.setText(fornecedor.getEndereco());
     }
 
+    //Deletar um fornecedor
     public void ibDeleteFornecedorOnClick(View view){
         fornecedorDAO.delete(id);
         Toast.makeText(this, "Fornecedor Excluído", Toast.LENGTH_SHORT).show();
         finish();
     }
 
+    //Clean Detalhes do fornecedor
     public void ibClearFornecedorOnClick(View view){
         setFornecedor(new Fornecedor());
+        etFornecedorCodigo.setText("");
     }
 }
