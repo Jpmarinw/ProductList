@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Recycler</string>
+    <string name="res_code">Code</string>
+    <string name="res_name">Name</string>
+    <string name="res_phone">Phone</string>
+    <string name="res_email">E-Mail</string>
+    <string name="res_address">Address</string>
+</resources>
