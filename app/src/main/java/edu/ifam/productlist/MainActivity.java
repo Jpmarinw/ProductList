@@ -3,6 +3,8 @@ package edu.ifam.productlist;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FornecedorAdapter fornecedorAdapter;
     private List<Fornecedor> fornecedorList;
     private FornecedorDAO fornecedorDAO;
+    private ProgressBar pbMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewFornecedores);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fornecedorDAO = new FornecedorDAO(this);
+        pbMainActivity = findViewById(R.id.pbMain);
+        pbMainActivity.setVisibility(View.INVISIBLE);
     }
 
     @Override
