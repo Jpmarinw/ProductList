@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import edu.ifam.productlist.FornecedorDetails;
 import edu.ifam.productlist.R;
 import edu.ifam.productlist.entity.Fornecedor;
+import edu.ifam.productlist.interfaces.IRecyclerClick;
+
 import java.util.List;
 
 public class FornecedorAdapter extends RecyclerView.Adapter<FornecedorAdapter.FornecedorViewHolder> {
 
     private Context context;
     private List<Fornecedor> fornecedores;
+    private IRecyclerClick recyclerClick;
 
     public FornecedorAdapter(Context context, List<Fornecedor> fornecedores) {
         this.context = context;
@@ -39,6 +42,7 @@ public class FornecedorAdapter extends RecyclerView.Adapter<FornecedorAdapter.Fo
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, FornecedorDetails.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("id", fornecedor.getId());
             context.startActivity(intent);
         });

@@ -1,5 +1,6 @@
 package edu.ifam.productlist;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FornecedorDAO fornecedorDAO;
     private ProgressBar pbMainActivity;
     private FornecedorAPI fornecedorAPI;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        context = this;
         recyclerView = findViewById(R.id.recyclerViewFornecedores);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fornecedorDAO = new FornecedorDAO(this);
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void acessarAPI(){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.100.50.166:8080").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.100.39.58:8080").addConverterFactory(GsonConverterFactory.create()).build();
         fornecedorAPI = retrofit.create(FornecedorAPI.class);
     }
 
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     String codigoErro = "Erro: " + response.code();
                     Toast.makeText(getApplicationContext(), codigoErro, Toast.LENGTH_SHORT).show();
                 }
-                fornecedorAdapter = new FornecedorAdapter(getApplicationContext(), fornecedores);
+                fornecedorAdapter = new FornecedorAdapter(context, fornecedores);
                 recyclerView.setAdapter(fornecedorAdapter);
                 pbMainActivity.setVisibility(View.INVISIBLE);
             }
